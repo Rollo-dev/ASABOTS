@@ -196,11 +196,11 @@ local function stringlinks(results)
   return stringresults
 end
 local function run(msg, matches)
-   if matches[1] == 'google' and is_sudo(msg) then
+   if matches[1] == 'سرچ کن' and is_sudo(msg) then
   local results = googlethat(matches[1])
   return 'نتایج جستجو\n\n'..stringlinks(results)
 end
-   if matches[1] == 'webshot' and is_sudo(msg) then
+   if matches[1] == 'عکس بگیر' and is_sudo(msg) then
    local find = get_webshot_url(matches[2])
    if find then
       local imgurl = base .. find
@@ -208,35 +208,35 @@ end
       send_photo_from_url(receiver, imgurl)
    end
 end
-if matches[1] == 'sticker' and is_sudo(msg) then
+if matches[1] == 'تبدیل' and is_sudo(msg) then
   local texturl = "http://latex.codecogs.com/png.download?".."\\dpi{800}%20\\LARGE%20"..URL.escape(matches[2])
   local receiver = get_receiver(msg)
   local file = download_to_file(texturl,'text.webp')
       send_document('chat#id'..msg.to.id, file, ok_cb , false)
       send_document('channel#id'..msg.to.id, file, ok_cb , false)
 end
-   if matches[1] == 'voice' and is_sudo(msg) then
+   if matches[1] == 'ظبط کن' and is_sudo(msg) then
   local voiceapi = "http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&text="..URL.escape(matches[2])
   local receiver = get_receiver(msg)
   local file = download_to_file(voiceapi,'text.ogg')
       send_audio('channel#id'..msg.to.id, file, ok_cb , false)
       send_audio('chat#id'..msg.to.id, file, ok_cb , false)
 end
-if matches[1] == "insta" and not matches[3] and is_sudo(msg) then
+if matches[1] == "اینستا" and not matches[3] and is_sudo(msg) then
     return instagramUser(msg,matches[2])
 end
-if matches[1] == "insta" and matches[3] and is_sudo(msg) then
+if matches[1] == "اینستا" and matches[3] and is_sudo(msg) then
     local media = matches[3]
     if string.match(media , '/') then media = media:gsub("/", "") end
     return instagramMedia(msg,media)
 end
-if matches[1] == 'set' and is_sudo(msg) then
+if matches[1] == 'ست' and is_sudo(msg) then
     local name = string.sub(matches[2], 1, 50)
   local value = string.sub(matches[3], 1, 1000)
   local text = save_value(msg, name, value)
   return text
 end
-if matches[1] == 'get' and is_sudo(msg) then
+if matches[1] == 'گیت' and is_sudo(msg) then
     if matches[2] then
     return get_value(msg, matches[2])
   else
@@ -249,17 +249,17 @@ return {
   description = "funny plugin",
   usage = "see commands in patterns",
   patterns = {
-    "^#(google) (.*)$",
-    "^#(webshot) (https?://[%w-_%.%?%.:/%+=&]+)$",
-    "^#(voice) (.+)$",
-   "^#(insta) ([Hh]ttps://www.instagram.com/p/)([^%s]+)$",
-   "^#(insta) ([Hh]ttps://instagram.com/p/)([^%s]+)$",
-   "^#(insta) ([Hh]ttp://www.instagram.com/p/)([^%s]+)$",
-   "^#(insta) ([Hh]ttp://instagram.com/p/)([^%s]+)$",
-   "^#(insta) (.*)$",    
-   "^#(set) ([^%s]+) (.*)$",
-   "^#(get) (.*)$",
-   "^#(sticker) (.*)$",
+    "^(سرچ کن) (.*)$",
+    "^(عکس بگیر) (https?://[%w-_%.%?%.:/%+=&]+)$",
+    "^(ظبط کن) (.+)$",
+   "^(اینستا) ([Hh]ttps://www.instagram.com/p/)([^%s]+)$",
+   "^(اینستا) ([Hh]ttps://instagram.com/p/)([^%s]+)$",
+   "^(اینستا) ([Hh]ttp://www.instagram.com/p/)([^%s]+)$",
+   "^(اینستا) ([Hh]ttp://instagram.com/p/)([^%s]+)$",
+   "^(اینستا) (.*)$",    
+   "^(ست) ([^%s]+) (.*)$",
+   "^(گیت) (.*)$",
+   "^(تبدیل) (.*)$",
     },
   run = run
 }
