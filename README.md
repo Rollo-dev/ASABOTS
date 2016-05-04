@@ -1,4 +1,4 @@
-Self-Bot V2
+Self-Bot V1
 ============
 
 A Telegram Bot based on [DBTeam bot](https://github.com/Josepdal/DBTeam).
@@ -11,14 +11,18 @@ sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-d
 ```
 
 ```bash
-سلام 
-آموزش ساخت سلف ربات توسط 
-#alireza_pt
-در کانال آموزشي ساخت ربات ضد اسپم تلگرام به آيدي
-@create_antispam_bot
+سلام دوستان عزیز 
+این سورس ادیت شده توسط 
+@Xx_ashkan_shraram_xX
+کانال تیم ما 
+@LOGOTEAM
 
 
-کد ها رو در زير ميزارم طبق فيلم آموزشي عمل کنيد
+
+نوشته شده توسط تیم
+ASA TEAM
+
+اموزش نصب ربات سلف بات
 
 sudo apt-get update
 
@@ -35,15 +39,3 @@ cd self_bot
 ./launch.sh install
 
 موفق باشيد
-```
-
-Security Team
------------------
-
-[HAJ PRO](http://telegram.me/alireza_PT)<br>
-
-
-Security Team Channel
------------------
-
-[my Team](http://telegram.me/create_antispam_bot)
