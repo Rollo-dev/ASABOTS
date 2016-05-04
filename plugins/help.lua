@@ -3,23 +3,20 @@ do
 function run(msg, matches)
   local help = [[Self-Bot Commands
 
-●#bot on
+●ربات روشن
 فعال کردن بوت در یک گروه خواص
 
-●#bot off
+●ربات خاموش
 غیر فعال کردن بوت در یک گروه خواض
 
-●#plugins
+●!plugins
 مشاهده لیست پلاگین ها
 
-●#plugins enable (plugin name)
+●#plugins + (plugin name)
 فعال کردن پلاگینی با نام (plugin name)
 
-●#plugins disable (plugin name)
+●#plugins - (plugin name)
 غیر فعال کردن پلاگینی با نام (plugin name)
-
-●#plugins reload
-آپدیت کردن لیست پلاگین ها
 
 ●#addplug (text) (name)
 اضافه کردن پلاگینی به محتوای (text)و نام (name) به لیست پلاگین 
@@ -27,25 +24,25 @@ function run(msg, matches)
 ●#getplug (name)
 ارسال پلاگین با نام (name)
 
-●#setname (name)
+●تنظیم نام (name)
 تغیر نام گروه به (name)
 
-●#link 
+●لینک
 دریافت لینک گروه در پیوی
 
-●#newlink
+●لینک جدید
 ساخت لینک جدید
 
-●#tosuper
+●تبدیل سوپر
 تبدیل گروه معمولی به سوپر گوه
 
 ●#setdes (text)
 تغیر دسکریپشن گروه به (text)
 
-●#rmv @username (by reply)
+●اخراج @username (by reply)
 اخراج فردی با آیدی @username (حتی با ریپلای)
 
-●#add @username (by reply)
+●اضافه @username (by reply)
 ادد کردن فردی با آیدی @username به گروه (حتی با ریپلای)
 
 ●#id @username (by reply)
@@ -80,17 +77,17 @@ function run(msg, matches)
 
 .......................................
 📡
-- @create_antispam_bot
+- @LOGOTEAM تیم ASATEAM
 .......................................]]
-    if matches[1] == 'help' and is_sudo(msg) then
+    if matches[1] == 'راهنما' and is_sudo(msg) then
       send_large_msg("user#id"..msg.from.id, help)      
-   return '💥 Help was sent in your pv '
+   return 'راهنما به پی وی شما ارسال شد '
     end
 end 
 
 return {
   patterns = {
-    "^#(help)$"
+    "^(راهنما)$"
   },
   run = run
 }
