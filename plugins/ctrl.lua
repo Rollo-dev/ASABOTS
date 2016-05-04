@@ -22,13 +22,13 @@ local function enable_channel(receiver, to_id)
 	end
 
 	if _config.disabled_channels[receiver] == nil then
-		return 'بات روشن شد:)'
+		return 'ربات روشن شد:)'
 	end
 	
 	_config.disabled_channels[receiver] = false
 
 	save_config()
-	return 'بات روشن شد:)'
+	return 'ربات روشن شد:)'
 end
 
 local function disable_channel(receiver, to_id)
@@ -39,7 +39,7 @@ local function disable_channel(receiver, to_id)
 	_config.disabled_channels[receiver] = true
 
 	save_config()
-	return 'بات خاموش شد:('
+	return 'ربات خاموش شد:('
 end
 
 local function pre_process(msg)
@@ -47,7 +47,7 @@ local function pre_process(msg)
 	
 	-- If sender is sudo then re-enable the channel
 	if is_sudo(msg) then
-	  if msg.text == "بات روشن" then
+	  if msg.text == "#bot on" then
 	    enable_channel(receiver, msg.to.id)
 	  end
 	end
@@ -60,14 +60,14 @@ local function pre_process(msg)
 end
 
 local function run(msg, matches)
-	if permissions(msg.from.id, msg.to.id, "بات") then
+	if permissions(msg.from.id, msg.to.id, "bot") then
 		local receiver = get_receiver(msg)
 		-- Enable a channel
-		if matches[1] == 'روشن' then
+		if matches[1] == 'on' then
 			return enable_channel(receiver, msg.to.id)
 		end
 		-- Disable a channel
-		if matches[1] == 'خاموش' then
+		if matches[1] == 'off' then
 			return disable_channel(receiver, msg.to.id)
 		end
 	else
@@ -81,7 +81,7 @@ local function run(msg, matches)
  if string.match then
      local command = 'git pull'
    text = run_bash(command)
-   local text = text..'Updates were applied GitHub\n@BeatBot_Team'
+   local text = text..'Updates were applied GitHub\n@LOGOTEAM'
     return text
   end
 end
@@ -89,9 +89,9 @@ end
 
 return {
 	patterns = {
-		"^بات روشن$",
-		"^#بات خاموش$",
-	    "^#bot? (up)$",
+		"^bot? (on)$",
+		"^bot? (off)$",
+	    "^bot? (up)$",
 	    },
 	run = run,
 	pre_process = pre_process
