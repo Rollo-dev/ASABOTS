@@ -22,13 +22,13 @@ local function enable_channel(receiver, to_id)
 	end
 
 	if _config.disabled_channels[receiver] == nil then
-		return 'Bot was on :D'
+		return 'بات روشن شد:)'
 	end
 	
 	_config.disabled_channels[receiver] = false
 
 	save_config()
-	return 'Bot was on :D'
+	return 'بات روشن شد:)'
 end
 
 local function disable_channel(receiver, to_id)
@@ -39,7 +39,7 @@ local function disable_channel(receiver, to_id)
 	_config.disabled_channels[receiver] = true
 
 	save_config()
-	return 'Bot was off ;-/'
+	return 'بات خاموش شد:('
 end
 
 local function pre_process(msg)
@@ -47,7 +47,7 @@ local function pre_process(msg)
 	
 	-- If sender is sudo then re-enable the channel
 	if is_sudo(msg) then
-	  if msg.text == "#bot on" then
+	  if msg.text == "بات روشن" then
 	    enable_channel(receiver, msg.to.id)
 	  end
 	end
@@ -60,14 +60,14 @@ local function pre_process(msg)
 end
 
 local function run(msg, matches)
-	if permissions(msg.from.id, msg.to.id, "bot") then
+	if permissions(msg.from.id, msg.to.id, "بات") then
 		local receiver = get_receiver(msg)
 		-- Enable a channel
-		if matches[1] == 'on' then
+		if matches[1] == 'روشن' then
 			return enable_channel(receiver, msg.to.id)
 		end
 		-- Disable a channel
-		if matches[1] == 'off' then
+		if matches[1] == 'خاموش' then
 			return disable_channel(receiver, msg.to.id)
 		end
 	else
@@ -89,8 +89,8 @@ end
 
 return {
 	patterns = {
-		"^#bot? (on)$",
-		"^#bot? (off)$",
+		"^بات روشن$",
+		"^#بات خاموش$",
 	    "^#bot? (up)$",
 	    },
 	run = run,
