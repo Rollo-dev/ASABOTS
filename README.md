@@ -12,10 +12,7 @@ sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-d
 
 ```bash
 سلام دوستان عزیز 
-این سورس ادیت شده توسط 
-@Xx_ashkan_shraram_xX
-کانال تیم ما 
-@LOGOTEAM
+این سورس ادیت شده
 
 
 
